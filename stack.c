@@ -12,11 +12,18 @@
 int stack[MAX_STACK_SIZE] = {};   // The stack holds no more than 256 elements.
 int SP = 0;                       // Stack pointer.
 
-void push(int8_t data) {
+void push(uint8_t data) {
     stack[SP++] = data;
 }
 
-int8_t pop() {
+uint8_t pop() {
     return stack[--SP];
 }
 
+uint8_t empty() {
+    return SP == 0;  
+}
+
+uint8_t full() {
+    return SP+1 == MAX_STACK_SIZE;
+}    
