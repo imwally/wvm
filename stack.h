@@ -9,7 +9,9 @@
 
 #include <stdint.h>
 
-void push(int8_t);
-int8_t pop();
+void push(uint8_t);
+uint8_t pop();
+uint8_t empty();
+uint8_t full();
 
 #endif
