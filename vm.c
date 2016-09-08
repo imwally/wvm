@@ -84,7 +84,7 @@ void run(machine vm, const uint8_t program[]) {
   
     uint8_t ip = 0; 
     uint8_t instruction = program[ip];
-    while (vm != NULL) {
+    while (vm) {
         switch(instruction) {
             case HALT:
                 halt(vm);
