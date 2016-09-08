@@ -15,7 +15,7 @@ PUSH    |   1       | push operand on to the stack
 POP     |   2       | pop operand off the stack and print value
 ADD     |   3       | pop top 2 operands, add them, push sum back onto the stack
 SUB     |   4       | pop top 2 operands, subtract them, push difference onto the stack
-MUL     |   5       | pop top 2 operands, multiply them, push products onto the stack
+MUL     |   5       | pop top 2 operands, multiply them, push product onto the stack
 DIV     |   6       | pop top 2 operands, divide them, push quotient onto the stack
 ```
 
