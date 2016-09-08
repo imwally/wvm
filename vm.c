@@ -91,7 +91,7 @@ void push(machine vm, uint8_t data) {
     if (full(vm)) {
         printf("WVM: error: stack overflow.\n");
         halt(vm);
-        exit(0);
+        exit(1);
     }
     vm->stack[(vm->sp)++] = data;
 }
@@ -100,7 +100,7 @@ uint8_t pop(machine vm) {
     if (empty(vm)) {
         printf("WVM: error: stack underflow.\n");
         halt(vm);
-        exit(0);
+        exit(1);
     }
     return vm->stack[--(vm->sp)];
 }
