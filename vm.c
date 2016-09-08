@@ -62,24 +62,9 @@ const uint8_t program[] = {
     PUSH, 120,
     DIV,
     POP,
+    POP,
     HALT
 };
-
-void push(machine vm, uint8_t data) {
-    vm->stack[(vm->sp)++] = data;
-}
-
-uint8_t pop(machine vm) {
-    return vm->stack[--(vm->sp)];
-}
-
-uint8_t empty(machine vm) {
-    return vm->sp == 0;  
-}
-
-uint8_t full(machine vm) {
-    return vm->sp+1 == MAX_STACK_SIZE;
-}
 
 machine init() {
     machine vm = malloc(sizeof(struct VM));
@@ -93,6 +78,32 @@ void halt(machine vm) {
         free(vm);
     }
     printf("WVM: halted.\n");
+}
+
+uint8_t empty(machine vm) {
+    return vm->sp == 0;  
+}
+
+uint8_t full(machine vm) {
+    return vm->sp+1 == MAX_STACK_SIZE;
+}
+
+void push(machine vm, uint8_t data) {
+    if (full(vm)) {
+        printf("WVM: error: stack overflow.\n");
+        halt(vm);
+        exit(0);
+    }
+    vm->stack[(vm->sp)++] = data;
+}
+
+uint8_t pop(machine vm) {
+    if (empty(vm)) {
+        printf("WVM: error: stack underflow.\n");
+        halt(vm);
+        exit(0);
+    }
+    return vm->stack[--(vm->sp)];
 }
 
 void run(machine vm, const uint8_t program[]) {
