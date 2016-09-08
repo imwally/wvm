@@ -45,8 +45,10 @@ instructions below.
 
 Installation
 ------------
-`$ git clone https://github.com/imwally/wvm.git`
-`$ make`
+```
+$ git clone https://github.com/imwally/wvm.git
+$ make
+```
 
 Run
 ---
