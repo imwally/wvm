@@ -28,7 +28,8 @@ typedef enum {
  * print 26
  * 80 - 50 = 30
  * 2  * 30 = 60
- * print 60
+ * 120 / 60 = 2
+ * print 2
  */
 const uint8_t program[] = {
     PUSH, 10,
@@ -42,6 +43,8 @@ const uint8_t program[] = {
     SUB,
     PUSH, 2,
     MUL, 
+    PUSH, 120,
+    DIV,
     POP,
     HALT
 };
