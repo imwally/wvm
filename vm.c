@@ -62,7 +62,6 @@ const uint8_t program[] = {
     PUSH, 120,
     DIV,
     POP,
-    POP,
     HALT
 };
 
