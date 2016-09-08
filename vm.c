@@ -20,8 +20,8 @@ typedef enum {
 } isa;
 
 /*
- * According the instruction set from above the following program should look
- * something like this:
+ * According to the instruction set from above the following program should
+ * produce something like this:
  *
  * 11 + 10 = 21
  * 5  + 21 = 26
