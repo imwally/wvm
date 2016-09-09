@@ -3,7 +3,8 @@ Wally's Virtual Machine
 
 This is my attempt at writing a *very* simple stack based virtual machine, or
 if you will, a [stack machine](https://en.wikipedia.org/wiki/Stack_machine). It
-works on a single stack with a limited set of instructions.
+works on a single stack with a limited set of instructions which besides stack
+operations, do nothing more than basic arithmetic.
 
 Instruction Set
 ---------------
@@ -42,6 +43,13 @@ HALT        ; Stop the machine
 This is the same program that's baked into this machine so if you would like to
 try it yourself you can clone this repository and follow the installation
 instructions below.
+
+The Stack
+---------
+The stack has a limited max size that holds no more than 256 values. Basic
+protection is made in case of a stack overflow (pushing more than 256 values
+onto the stack) or stack underflow (popping an empty stack). In these cases the
+machine will simply halt execution and shutdown.
 
 Installation
 ------------
