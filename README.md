@@ -4,7 +4,7 @@ Wally's Virtual Machine
 This is my attempt at writing a *very* simple stack based virtual machine, or
 if you will, a [stack machine](https://en.wikipedia.org/wiki/Stack_machine). It
 works on a single stack with a limited set of instructions which besides stack
-operations, do nothing more than basic arithmetic.
+operations do nothing more than basic arithmetic.
 
 Instruction Set
 ---------------
