@@ -65,6 +65,9 @@ const uint8_t program[] = {
     HALT
 };
 
+/*
+ * Initialise new machine and set stack pointer to zero.
+ */
 machine init() {
     machine vm = malloc(sizeof(struct VM));
     vm->sp = 0;
@@ -72,6 +75,9 @@ machine init() {
     return vm;
 }
 
+/*
+ * Free memory in use by machine.
+ */
 void halt(machine vm) {
     if(vm) {
         free(vm);
@@ -79,14 +85,24 @@ void halt(machine vm) {
     printf("WVM: halted.\n");
 }
 
+/*
+ * Check if the stack is empty.
+ */
 uint8_t empty(machine vm) {
     return vm->sp == 0;  
 }
 
+/*
+ * Check if the stack is full.
+ */
 uint8_t full(machine vm) {
     return vm->sp+1 == MAX_STACK_SIZE;
 }
 
+/*
+ * Push value onto the stack if there is space. Halt the machine and terminate
+ * if the stack is full.
+ */
 void push(machine vm, uint8_t data) {
     if (full(vm)) {
         printf("WVM: error: stack overflow.\n");
@@ -96,6 +112,10 @@ void push(machine vm, uint8_t data) {
     vm->stack[(vm->sp)++] = data;
 }
 
+/*
+ * Pop top value off the stack if it is not empty. Halt the machine and
+ * terminate if the stack is empty.
+ */
 uint8_t pop(machine vm) {
     if (empty(vm)) {
         printf("WVM: error: stack underflow.\n");
@@ -105,10 +125,14 @@ uint8_t pop(machine vm) {
     return vm->stack[--(vm->sp)];
 }
 
+/*
+ * Given a program, step through each instruction by following the pointer as
+ * it is incremented on each evaluation. 
+ */
 void run(machine vm, const uint8_t program[]) {
     printf("WVM: running...\n");
   
-    uint8_t ip = 0; 
+    uint8_t ip = 0;                             // Instruction pointer.
     uint8_t instruction = program[ip];
     while (vm) {
         switch(instruction) {
